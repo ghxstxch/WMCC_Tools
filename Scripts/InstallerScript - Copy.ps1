@@ -1,0 +1,1 @@
+Start-Process -Wait -FilePath ".\apps\AxisCameraStation\AXISCameraStationSetup.exe" -ArgumentList "/S" -PassThru
