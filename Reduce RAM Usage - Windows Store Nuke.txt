@@ -1,0 +1,9 @@
+Get-AppxPackage -AllUsers | Remove-AppxPackage
+
+This command calls for a list of all UWP apps and then tells the PC to remove all retrieved apps in the list…so all of them, including the Windows Store.
+
+
+
+Get-AppxPackage -allusers Microsoft.WindowsStore | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+
+It reinstalls the Windows Store, but doesn’t install anything else, letting you pick and choose what apps you actually want.
