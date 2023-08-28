@@ -3,15 +3,19 @@ cls
 :start
 
 
-@ECHO Setting working directory
-cd /d %~dp0
+
+@ECHO Setting enviroment variables
+:: Get in the correct drive (~d0) and path (~dp0). Sometimes needed when run from a network or thumb drive.
+:: We stay in the root directory for the rest of the script
+%~d0 2>NUL
+pushd "%~dp0" 2>NUL
+call Scripts\functions\test.bat
 
 @ECHO Applying settings
-powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-powershell Set-ExecutionPolicy RemoteSigned
-powershell -file .\Scripts\Settings.ps1
+powershell -file .\Scripts\functions\Settings.ps1
 
 :installers
+powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 @ECHO.
 @ECHO 1. Install Generic Applications
 @ECHO 2. Install Lenovo AND Generic Applications
@@ -26,13 +30,11 @@ if '%choice%'=='3' goto test
 
 :genericapps
 @ECHO "Installing General applications"
-powershell Set-ExecutionPolicy RemoteSigned
 powershell -file .\Scripts\GenSetup.ps1
 goto end
 
 :lenovoapps
 @ECHO "Installing Lenovo & General applications"
-powershell Set-ExecutionPolicy RemoteSigned
 powershell -file .\Scripts\GenLenovoSetup.ps1
 goto end
 
@@ -45,5 +47,6 @@ goto installers
 
 
 :end
+powershell Set-ExecutionPolicy -Scope CurrentUser %execpol%
 PAUSE
 
