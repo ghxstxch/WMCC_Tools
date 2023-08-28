@@ -12,7 +12,7 @@ pushd "%~dp0" 2>NUL
 call Scripts\functions\test.bat
 
 @ECHO Applying settings
-powershell -file .\Scripts\functions\Settings.ps1
+
 
 :installers
 powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
