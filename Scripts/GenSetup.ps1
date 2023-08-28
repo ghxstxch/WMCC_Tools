@@ -1,5 +1,5 @@
 # Unattended Install of Google Chrome
-Set-ExecutionPolicy RemoteSigned
+
 
 
 $Installer = $env:TEMP + "\chrome_installer.exe";
