@@ -1,11 +1,6 @@
 @ECHO OFF
 :start
 
-FOR /F "tokens=* USEBACKQ" %%F IN (`cd`) DO (
-SET CD=%%F
-)
-powershell gci -Path "%CD%" -Recurse | powershell Unblock-File
-
 
 :execpol
 FOR /F "tokens=* USEBACKQ" %%F IN (`powershell Get-ExecutionPolicy`) DO (
