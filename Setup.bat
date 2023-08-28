@@ -9,7 +9,7 @@ cls
 :: We stay in the root directory for the rest of the script
 %~d0 2>NUL
 pushd "%~dp0" 2>NUL
-call Scripts\functions\test.bat
+call Scripts\functions\pre-run.bat
 
 @ECHO Applying settings
 
