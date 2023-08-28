@@ -1,7 +1,6 @@
 @ECHO OFF
 :start
 
-
 :execpol
 FOR /F "tokens=* USEBACKQ" %%F IN (`powershell Get-ExecutionPolicy`) DO (
 SET execpol=%%F

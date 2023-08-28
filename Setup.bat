@@ -3,19 +3,16 @@ cls
 :start
 
 
-
 @ECHO Setting enviroment variables
 :: Get in the correct drive (~d0) and path (~dp0). Sometimes needed when run from a network or thumb drive.
 :: We stay in the root directory for the rest of the script
 %~d0 2>NUL
 pushd "%~dp0" 2>NUL
 call Scripts\functions\pre-run.bat
-
 @ECHO Applying settings
 
 
 :installers
-powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 @ECHO.
 @ECHO 1. Install Generic Applications
 @ECHO 2. Install Lenovo AND Generic Applications
