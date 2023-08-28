@@ -1,0 +1,4 @@
+FOR /F "tokens=* USEBACKQ" %%F IN (`powershell Get-ExecutionPolicy -List`) DO (
+SET var=%%F
+)
+ECHO %var%
