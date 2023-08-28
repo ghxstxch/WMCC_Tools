@@ -27,12 +27,12 @@ if '%choice%'=='3' goto test
 
 :genericapps
 @ECHO "Installing General applications"
-powershell -file .\Scripts\GenSetup.ps1
+powershell -ExecutionPolicy ByPass -file .\Scripts\GenSetup.ps1
 goto end
 
 :lenovoapps
 @ECHO "Installing Lenovo & General applications"
-powershell -file .\Scripts\GenLenovoSetup.ps1
+powershell -ExecutionPolicy ByPass -file .\Scripts\GenLenovoSetup.ps1
 goto end
 
 :test
