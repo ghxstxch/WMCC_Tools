@@ -13,6 +13,7 @@ call Scripts\functions\pre-run.bat
 
 
 :installers
+::Multiple choice options, lets you select between different install scenarios. 
 @ECHO.
 @ECHO 1. Install Generic Applications
 @ECHO 2. Install Lenovo AND Generic Applications
@@ -26,24 +27,29 @@ if '%choice%'=='3' goto test
 @ECHO "%choice%" is not valid, try again
 
 :genericapps
+::Installs Generic apps
 @ECHO "Installing General applications"
 powershell -ExecutionPolicy ByPass -file .\Scripts\GenSetup.ps1
-goto end
+goto end && cls
 
 :lenovoapps
+::Installs Generic apps + Lenovo System Update
 @ECHO "Installing Lenovo & General applications"
 powershell -ExecutionPolicy ByPass -file .\Scripts\GenLenovoSetup.ps1
-goto end
+goto end && cls
 
 :test
+::Not set up yet, lol
 cls
 ECHO "This option has not been setup yet. Ask the script's creator for more details."
 PAUSE
-cls
-goto installers
+
+goto installers && cls
 
 
 :end
+:: This does what you think it does. 
 powershell Set-ExecutionPolicy -Scope CurrentUser %execpol%
+@ECHO The script has finished running! :)  
 PAUSE
 
