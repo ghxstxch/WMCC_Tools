@@ -15,7 +15,7 @@ call Scripts\functions\pre-run.bat
 :settings
 ::Applies changes to settings found in Settings.ps1. At the time of writing, all this does is change the TZ to CST. 
 @ECHO Applying settings.
-powershell -ExecutionPolicy ByPass -file .\Scripts\Settings.ps1
+call Scripts\settings.bat
 
 :installers
 ::Multiple choice options, lets you select between different install scenarios. 
