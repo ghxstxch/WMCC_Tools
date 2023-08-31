@@ -9,13 +9,12 @@ cls
 %~d0 2>NUL
 pushd "%~dp0" 2>NUL
 call Scripts\functions\pre-run.bat
-@ECHO Applying settings
 
 
 :settings
 ::Applies changes to settings found in Settings.ps1. At the time of writing, all this does is change the TZ to CST. 
 @ECHO Applying settings.
-call Scripts\settings.bat
+powershell -ExecutionPolicy ByPass -file .\Scripts\settings.ps1
 
 :installers
 ::Multiple choice options, lets you select between different install scenarios. 
@@ -33,13 +32,13 @@ if '%choice%'=='3' goto test
 
 :genericapps
 ::Installs Generic apps
-@ECHO Installing general applications
+@ECHO "Installing generic out-of-box applications"
 powershell -ExecutionPolicy ByPass -file .\Scripts\GenSetup.ps1
 goto end && cls
 
 :lenovoapps
 ::Installs Generic apps + Lenovo System Update
-@ECHO Installing Lenovo & General applications
+@ECHO "Installing Lenovo & General applications"
 powershell -ExecutionPolicy ByPass -file .\Scripts\GenLenovoSetup.ps1
 goto end && cls
 
