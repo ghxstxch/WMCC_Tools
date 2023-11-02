@@ -14,3 +14,5 @@ $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest "https://ardownload2.adobe.com/pub/adobe/reader/win/AcrobatDC/2300320201/AcroRdrDC2300320201_en_US.exe" -OutFile $Installer; 
 Start-Process -FilePath $Installer -Args "/sAll /a /qn" -Verb RunAs -Wait; 
 Remove-Item $Installer;
+
+cmd /c assoc .pdf=Acrobat.Document.DC
